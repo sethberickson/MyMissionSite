@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MyMissionSite.Models.Missions>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Mission", "CreateMission")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_President_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_Language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_Climate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mission_Dominant_Religion)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_President_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_Climate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mission_Dominant_Religion)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "EditMission", new { id = item.Mission_ID }) |
+                @Html.ActionLink("Delete", "DeleteMission", new { id = item.Mission_ID }) |
+                @Html.ActionLink("FAQ", "MissionFAQ", "Mission", new { id = item.Mission_ID })
+
+        </tr>
+    }
+
+</table>
