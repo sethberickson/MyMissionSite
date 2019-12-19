@@ -13,6 +13,7 @@ namespace MyMissionSite.Controllers
     {
         public static int userID;
         public static int missionID;
+    
         private MissionContext db = new MissionContext();
 
         // GET: Mission
@@ -36,6 +37,12 @@ namespace MyMissionSite.Controllers
         {
             missionID = id;
             ViewBag.Message = "Ask us a question!";
+
+
+            //ViewBag.Mission_Questions = db.Mission_Questions.ToList();
+            //Mission_Questions mq = db.Mission_Questions.Find(id);
+            //return View(mq);
+         
             return View(db.Mission_Questions.Where(x => x.Mission_ID == id));
         }
 
@@ -93,12 +100,13 @@ namespace MyMissionSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 //add entry
                 //db.Mission_Questions.Add(mqID);
                 //edit entries
                 db.Entry(mqID).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("MissionFAQ");
+                return RedirectToAction("IndexLog");
             }
 
             return View(mqID);
@@ -119,12 +127,12 @@ namespace MyMissionSite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateMission([Bind(Include = "Mission_ID, Mission_Name, Mission_President_Name, Mission_Address, Mission_Language, Mission_Climate, Mission_Dominant_Religion, Mission_Flag")] Mission_Questions mish)
+        public ActionResult CreateMission([Bind(Include = "Mission_ID, Mission_Name, Mission_President_Name, Mission_Address, Mission_Language, Mission_Climate, Mission_Dominant_Religion, Mission_Flag")] Missions mish)
         {
             if (ModelState.IsValid)
             {
                 //add entry
-                db.Mission_Questions.Add(mish);
+                db.Missions.Add(mish);
                 //edit entries
                 //db.Entry(mish).State = EntityState.Modified;
                 db.SaveChanges();
@@ -150,12 +158,12 @@ namespace MyMissionSite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditMission([Bind(Include = "Mission_ID, Mission_Name, Mission_President_Name, Mission_Address, Mission_Language, Mission_Climate, Mission_Dominant_Religion, Mission_Flag")] Mission_Questions mish)
+        public ActionResult EditMission([Bind(Include = "Mission_ID, Mission_Name, Mission_President_Name, Mission_Address, Mission_Language, Mission_Climate, Mission_Dominant_Religion, Mission_Flag")] Missions mish)
         {
             if (ModelState.IsValid)
             {
                 //add entry
-                //db.Mission_Questions.Add(mish);
+                //db.Missions.Add(mish);
                 //edit entries
                 db.Entry(mish).State = EntityState.Modified;
                 db.SaveChanges();

@@ -41,6 +41,7 @@ namespace MyMissionSite.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
 

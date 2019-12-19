@@ -30,7 +30,6 @@
             @Html.DisplayNameFor(model => model.Mission_Dominant_Religion)
         </th>
         
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -58,7 +57,7 @@
             <td>
                 @Html.ActionLink("Edit", "EditMission", new { id = item.Mission_ID }) |
                 @Html.ActionLink("Delete", "DeleteMission", new { id = item.Mission_ID }) |
-                @Html.ActionLink("FAQ", "MissionFAQ", "Mission", new { id = item.Mission_ID })
+                @Html.ActionLink("FAQ", "MissionFAQ", new { id = item.Mission_ID })
 
         </tr>
     }

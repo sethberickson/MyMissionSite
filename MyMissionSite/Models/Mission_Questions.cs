@@ -14,20 +14,26 @@ namespace MyMissionSite.Models
         [Key]
         [DisplayName("Question ID")]
         public int Mission_Question_ID { get; set; }
-
-
+        
+        
+        //foreign key Mission_ID
+        [Required]
         [DisplayName("Mission ID")]
         public int Mission_ID { get; set; }
+        
+        /*
+        [ForeignKey("Mission_ID")]
+        public virtual Missions Missions { get; set; }
+        */
 
-
+        [Required]
         [DisplayName("User ID")]
         public int User_ID { get; set; }
 
         [Required]
         [DisplayName("Question")]
         public string Question { get; set; }
-
-        [Required]
+       
         [DisplayName("Answer")]
         public string Answer { get; set; }
     }
